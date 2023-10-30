@@ -1,0 +1,46 @@
+{% extends 'layouts/base.html' %} {% load static %} {% block title %} home page
+{% endblock %} {% block content %}
+<div class="row">
+  <div class="col-12">
+    <a href="{% url 'product.create' %}" class="btn btn-success"
+      >Create product</a
+    >
+    <a href="{% url 'product.create_form' %}" class="btn btn-success"
+      >Create via form</a
+    >
+    <a href="{% url 'product.create_model_form' %}" class="btn btn-danger"
+      >Create via model form</a
+    >
+    <a href="{% url 'post.create' %}" class="btn btn-danger">Create Post</a>
+  </div>
+</div>
+<div class="row mt-5 p-5">
+  {% for prod in products %}
+
+  <div class="col-4 p-3">
+    <div class="card" style="width: 18rem">
+      <img
+        class="card-img-top"
+        src="{{ prod.get_image_url }}"
+        alt="Card image cap"
+        width="200"
+        height="200"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ prod.title }}</h5>
+        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+        <!-- <a href="{%  url 'product.detail' prod.id %}" class="btn btn-primary">Go somewhere</a> -->
+        <a href="{{prod.get_detial_url}}" class="btn btn-primary">Info</a>
+        <a href="{{prod.get_delete_url}}" class="btn btn-danger">Delet</a>
+        <!-- <a href="{{prod.get_edit_url}}" class="btn btn-danger">Edit</a> -->
+        <a href="{% url 'product.edit' prod.id %}" class="btn btn-danger"
+          >Edit</a
+        >
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+
+{% endblock %}

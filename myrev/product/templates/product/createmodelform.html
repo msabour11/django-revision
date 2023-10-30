@@ -1,0 +1,20 @@
+
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block title %} create model form {% endblock %}
+
+{% block content %}
+
+
+
+
+<form method="post" class="mt-5 mb-5" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{form}}
+
+<button type="submit" class="btn btn-success">submit</button>
+
+</form>
+
+{% endblock %}
